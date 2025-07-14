@@ -102,4 +102,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial fetch
   fetchAndDisplay();
+
+//logout logic
+const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("userId");  //remove login info
+      window.location.href = "login.html";  //redirect to login page
+    });
+  }
 });
