@@ -6,6 +6,9 @@
     box-sizing: border-box;
     font-family: Urbanist;
 }
+body{
+    overflow-x: hidden;
+}
 
 .navbar{
     display: flex;
@@ -92,4 +95,108 @@ form button{
     background-color: antiquewhite;
     
 }
+.loginPage{
+    background-color: antiquewhite;
+    /* display: flex; */
+    /* flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+#loginForm {
+    margin-left: 45%;
+    margin-top: 4rem;
+    background-color: black;
+    color: antiquewhite;
+    border-radius: 10px;
+    width: max-content;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
+  #loginForm button{
+    margin-left: 1rem;
+  }
+  /* responsiveness */
+
+  @media (max-width: 1024px) {
+  .head {
+    margin-left: 30%;
+    font-size: 1.4rem;
+  }
+
+  .freshUser {
+    margin-left: 20%;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .form-container {
+    margin-left: 20%;
+  }
+
+  #loginForm {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .head {
+    margin-left: 15%;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .freshUser {
+    margin-left: 10%;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .form-container {
+    margin-left: 10%;
+  }
+
+  .job-card {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: auto;
+  }
+
+  .navIcon {
+    margin-left: 1rem;
+  }
+
+  #loginForm {
+    margin: 2rem auto;
+    width: 90%;
+  }
+
+  .searchInput,
+  #statusFilter {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .head {
+    font-size: 1rem;
+    margin-left: 5%;
+  }
+
+  .freshUser {
+    font-size: 1rem;
+    margin-left: 5%;
+  }
+
+  #loginForm {
+    padding: 1rem;
+  }
+
+  .job-card {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+}

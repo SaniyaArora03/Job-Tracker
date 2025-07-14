@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "login.html";
     return;
   }
+  const userEmail = localStorage.getItem("email");
+
+
 
   let allJobs = [];
 
