@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Job Tracker</title>
+</head>
+<body class="indexPage">
+    <!-- navbar -->
+     <nav>
+        <div class="navbar">
+            <div class="navIcon">
+                <i class="fa-solid fa-house"></i>
+                <p>Home</p>
+            </div>
+            <div class="navIcon">
+              <i class="fa-solid fa-plus"></i>
+                <p><a href= add.html target="_blank" class="newPage">Add Job</a></p>
+            </div>
+            <div class="navIcon">
+                <i class="fa-solid fa-star"></i>
+                <p>Bookmark</p>
+            </div>
+        </div>
+        
+     </nav>
+     <!--  -->
+
+     <!-- Welcome -->
+      <h1 class="head">Hey! How are you doing?</h1>
+
+     <!-- search and filter -->
+      <section class="searchFilter">
+        <div class="searchFilterContainer">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search for job status" class="searchInput">
+            <select id="statusFilter">
+      <option value="">All Statuses</option>
+      <option value="Wishlist">Wishlist</option>
+      <option value="Applied">Applied</option>
+      <option value="Online Test">Online Test</option>
+      <option value="Interview">Interview</option>
+      <option value="Offer">Offer</option>
+      <option value="Rejected">Rejected</option>
+            </select>
+        </div>
+      </section>
+
+      <div class="freshUser">
+        <p>No jobs added yet. Click "+ Add Job" to start tracking!</p>
+      </div>
+
+     <!-- 📋 Job List -->
+  <section id="jobList" class="job-cards-container">
+    <!-- Cards will be injected here by JS -->
+  </section>
+     
+     <!-- footer -->
+      <nav>
+        <div class="footer">
+            <div class="navIcon">
+                 <p>Copyright 2025 </p>
+            </div>
+           
+
+        </div>
+      </nav>
+     
+ <script src="index.js"   ></script>
+</body>
+</html>

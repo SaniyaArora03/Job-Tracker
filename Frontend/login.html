@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login Page</title>
+</head>
+<body class="indexPage">
+  <h1 class="head">Hey! How are you doing?</h1>
+  <div class="login">
+    <form id="loginForm">
+         <input type="email" id="email" placeholder="Enter your email" required />
+         <button type="submit">Login</button>
+    </form>
+  </div>
+<script>
+    document.getElementById("loginForm").addEventListener("submit", async(e)=> {
+        e.preventDefault();
+        //get user email
+          const email = document.getElementById("email").value.trim(); // ✅ properly define email here
+        try {
+        
+        const res = await fetch("http://localhost:5000/api/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await res.json();
+        console.log(data);
+
+        if (!res.ok || !data.userId) {
+          alert("❌ Login failed. Invalid email or server issue.");
+          console.error("Login error:", data);
+          return;
+        }
+
+        localStorage.setItem("userId", data.userId);
+        window.location.href = "index.html";
+      } catch (err) {
+        alert("❌ Network error during login.");
+        console.error("Login fetch failed:", err);
+      }
+    });
+    
+</script>    
+</body>
+</html>

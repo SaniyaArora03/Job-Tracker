@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Add Job</title>
+</head>
+<body>
+    <!-- navbar -->
+     <nav>
+        <div class="navbar">
+            <div class="navIcon">
+                <i class="fa-solid fa-house"></i>
+                <p><a href="index.html" target="_blank">Home</a></p>
+            </div>
+            <div class="navIcon">
+              <i class="fa-solid fa-plus"></i>
+                <p><a href= add.html target="_blank" class="newPage">Add Job</a></p>
+            </div>
+            <div class="navIcon">
+                <i class="fa-solid fa-star"></i>
+                <p>Bookmark</p>
+            </div>
+        </div>
+        
+     </nav>
+     <!--  -->
+
+     <!-- add job -->
+      <section class="form-container">
+         <h2>Add a New Job Application</h2>
+         <form id="jobForm" >
+            <!-- company name -->
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="company" name="company" required />
+            <!-- role -->
+             <label for="role">Role</label>
+      <input type="text" id="role" name="role" required />
+      <!-- job link -->
+       <label for="jobLink">Job Link</label>
+      <input type="url" id="jobLink" name="jobLink" />
+      <!-- status -->
+       <label for="status">Status</label>
+      <select id="status" name="status">
+        <option>Wishlist</option>
+        <option>Applied</option>
+        <option>Online Test</option>
+        <option>Interview</option>
+        <option>Offer</option>
+        <option>Rejected</option>
+      </select>
+      <!-- applied date -->
+       <label for="appliedDate">Applied Date</label>
+      <input type="date" id="appliedDate" name="appliedDate" />
+      <!-- bookmark -->
+       <label for="isBookmarked">
+        <input type="checkbox" id="isBookmarked" name="isBookmarked" />
+        ⭐ Bookmark this job
+      </label>
+      <!-- submit button -->
+       <button type="submit">Submit</button>
+         </form>
+      </section>
+
+     <!-- footer -->
+      <nav>
+        <div class="footer">
+            <div class="navIcon">
+                 <p>Copyright 2025 </p>
+            </div>
+           
+
+        </div>
+      </nav>
+  <script src="add.js"  ></script>
+</body>
+</html>
