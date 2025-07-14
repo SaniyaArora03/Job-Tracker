@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       console.log("🧠 userId from localStorage:", userId);
 
-      const res = await fetch(`http://localhost:5000/api/jobs?userId=${userId}`);
+      const res = await fetch(`/api/jobs?userId=${userId}`);
       const jobs = await res.json();
 
       console.log("🔍 Jobs received from server:", jobs);
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       button.addEventListener("click", async () => {
         const id = button.dataset.id;
         if (confirm("Delete this job?")) {
-          await fetch(`http://localhost:5000/api/jobs/${id}`, { method: "DELETE" });
+          await fetch(`/api/jobs/${id}`, { method: "DELETE" });
           fetchAndDisplay(); // reload jobs
         }
       });
