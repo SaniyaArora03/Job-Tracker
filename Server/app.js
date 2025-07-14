@@ -1,6 +1,10 @@
 //acquire express
 const express = require('express');
 const app = express();
+const path=require('path');
+require("dotenv").config(); 
+const mongoURI = process.env.MONGO_URL;
+
 
 //acquire database
 const connectDB = require('../Server/db/connect');
@@ -25,10 +29,7 @@ app.use('/api/jobs', jobRoutes);
 const authRoutes = require('../Server/routers/auth');
 app.use('/api/auth', authRoutes);
 
-// Fallback route (for SPA refresh handling)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+
 
 //listening to server
 const start=async()=>{

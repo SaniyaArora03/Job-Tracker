@@ -1,10 +1,8 @@
 {
-  "name": "jobtracker"
-,
+  "name": "jobtracker",
   "version": "1.0.0",
   "description": "",
-  "main": "Server/app.js"
-,
+  "main": "Server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Server/app.js"

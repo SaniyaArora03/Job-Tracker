@@ -1,9 +1,12 @@
 //acquire mongoose
 const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoURI = process.env.MONGO_URL;
+
 
 const connectDB=async()=>{
     try{
-       await mongoose.connect("mongodb+srv://saniya_arora:shaina@cluster0.7s8htei.mongodb.net/jobtracker?retryWrites=true&w=majority&appName=Cluster0");
+       await mongoose.connect(mongoURI);
         console.log("✅ Connected to MongoDB");
     }catch (err) {
         console.error("❌ MongoDB connection error:", err.message);
