@@ -47,4 +47,19 @@ const deleteJob = async (req, res) => {
   }
 };
 
-module.exports = { getData, addJob,deleteJob };
+//update jobs
+const updateJob = async (req, res) => {
+  const {id}=req.params;
+  const { role, status } = req.body;
+  try {
+    const updatedjob = await Job.findByIdAndUpdate(id, { role, status }, { new: true });
+    if(!updatedjob){
+      return res.status(404).json({error:"Job not found"}); 
+    }
+  }catch(error){
+    console.error("❌ Error updating job:", err);
+    res.status(500).json({message:"Failed to update job"});
+  }};
+
+
+module.exports = { getData, addJob,deleteJob,updateJob };

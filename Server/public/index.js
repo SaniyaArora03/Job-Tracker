@@ -11,23 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const userEmail = localStorage.getItem("email");
 
-
-
   let allJobs = [];
 
   // Fetch jobs and display
   const fetchAndDisplay = async () => {
     try {
-      console.log("🧠 userId from localStorage:", userId);
-
       const res = await fetch(`/api/jobs?userId=${userId}`);
       const jobs = await res.json();
 
-      console.log("🔍 Jobs received from server:", jobs);
-
-      if (!Array.isArray(jobs)) {
-        throw new Error("❌ Expected an array but got something else.");
-      }
+      if (!Array.isArray(jobs)) throw new Error("Invalid job data");
 
       allJobs = jobs;
       renderJobs(jobs);
@@ -68,13 +60,48 @@ document.addEventListener("DOMContentLoaded", () => {
       jobList.appendChild(card);
     });
 
-    // Add delete functionality
+    // Delete logic
     document.querySelectorAll(".delete-btn").forEach((button) => {
       button.addEventListener("click", async () => {
         const id = button.dataset.id;
         if (confirm("Delete this job?")) {
           await fetch(`/api/jobs/${id}`, { method: "DELETE" });
-          fetchAndDisplay(); // reload jobs
+          fetchAndDisplay();
+        }
+      });
+    });
+
+    // Edit logic
+    document.querySelectorAll(".edit-btn").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const id = button.dataset.id;
+        const jobToEdit = allJobs.find((job) => job._id === id);
+
+        if (!jobToEdit) {
+          alert("Job not found");
+          return;
+        }
+
+        const updatedRole = prompt("Edit role:", jobToEdit.role);
+        const updatedStatus = prompt("Edit status:", jobToEdit.status);
+
+        if (updatedRole && updatedStatus) {
+          try {
+            const response = await fetch(`/api/jobs/${id}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ role: updatedRole, status: updatedStatus }),
+            });
+
+            if (!response.ok) throw new Error("Failed to update job");
+            alert("✅ Job updated!");
+            fetchAndDisplay();
+          } catch (err) {
+            console.error(err);
+            alert("❌ Failed to update job");
+          }
         }
       });
     });
@@ -86,12 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedStatus = statusFilter.value;
 
     const filtered = allJobs.filter((job) => {
-      const isMatch = //checks if search text is present
+      const isMatch =
         job.company.toLowerCase().includes(searchText) ||
         job.role.toLowerCase().includes(searchText) ||
         job.status.toLowerCase().includes(searchText);
 
-      const matchesStatus = selectedStatus === ""  || job.status === selectedStatus; //checks if dropdown is empty or selected status matches job status
+      const matchesStatus = selectedStatus === "" || job.status === selectedStatus;
 
       return isMatch && matchesStatus;
     });
@@ -106,12 +133,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial fetch
   fetchAndDisplay();
 
-//logout logic
-const logoutBtn = document.getElementById("logoutBtn");
+  // Logout logic
+  const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("userId");  //remove login info
-      window.location.href = "login.html";  //redirect to login page
+      localStorage.removeItem("userId");
+      window.location.href = "login.html";
     });
   }
 });
